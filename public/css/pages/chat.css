@@ -1,0 +1,22 @@
+.chat {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    height: 70vh;
+}
+
+.messages {
+    padding: 24px;
+}
+
+.message {
+    margin-bottom: 12px;
+    max-width: 60%;
+}
+
+.message.left {
+    color: var(--muted);
+}
+
+.message.right {
+    margin-left: auto;
+}

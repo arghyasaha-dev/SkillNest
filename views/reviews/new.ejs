@@ -1,0 +1,14 @@
+<%- layout("layouts/boilerplate.ejs") %>
+    <section class="form">
+        <h1>Leave Review</h1>
+
+        <form for="rating" action="/tasks/<%= task._id %>/reviews" method="POST" class="form-card">
+            <label>Rating (1–5)</label>
+            <input name="rating" id="rating" placeholder="rating" type="number" min="1" max="5" />
+
+            <label for="comment">Feedback</label>
+            <textarea name="comment" id="comment" placeholder="comment"></textarea>
+
+            <button class="btn primary">Submit</button>
+        </form>
+    </section>

@@ -1,0 +1,42 @@
+<%- layout("layouts/boilerplate") %>
+
+    <section class="accepted-bid">
+        <header class="page-header">
+            <h1>Accepted Bid</h1>
+            <p>This bid has been confirmed for the task</p>
+        </header>
+
+        <div class="card bid-summary">
+            <div class="bid-header">
+                <div>
+                    <span class="label">Provider</span>
+                    <strong>
+                        Dummy Name
+                    </strong>
+                </div>
+                <div class="status accepted">
+                    Status: <%= bid.status %>
+                </div>
+            </div>
+
+            <div class="bid-details">
+                <div class="detail">
+                    <span class="label">Bid Amount</span>
+                    <strong>₹<%= bid.amount %> </strong>
+                </div>
+
+                <div class="detail">
+                    <span class="label">Message: </span>
+                    <p>
+                        <%= bid.message %>
+                    </p>
+                </div>
+            </div>
+
+            <div class="bid-actions">
+                <a href="/tasks/<%= taskid %>/chat" class="btn primary">Open Chat</a>
+                <a href="/tasks/<%= taskid %>" class="btn ghost">View Task</a>
+            </div>
+
+        </div>
+    </section>

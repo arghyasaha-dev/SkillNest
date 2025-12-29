@@ -1,0 +1,17 @@
+<%- layout("layouts/boilerplate.ejs") %>
+    <section class="form">
+        <h1>Post a Task</h1>
+
+        <form action="/tasks" method="POST" class="form-card">
+            <label for="title">Title</label>
+            <input name="title" id="title" placeholder="title" type="text" />
+
+            <label for="description">Description</label>
+            <textarea name="description" id="description" placeholder="description"></textarea>
+
+            <label for="budget">Budget</label>
+            <input name="budget" id="budget" placeholder="budget" type="number" />
+
+            <button class="btn primary">Publish</button>
+        </form>
+    </section>

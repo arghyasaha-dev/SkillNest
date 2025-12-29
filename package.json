@@ -1,0 +1,25 @@
+{
+  "name": "skillnest",
+  "version": "1.0.0",
+  "description": "SkillNest is a hyperlocal skill exchange platform that connects people with nearby service providers through a bidding-based marketplace. Users can post tasks, receive bids from local professionals, chat securely, complete work, and build trust through mutual ratings — all within their neighborhood.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:brutalgeek/SkillNest.git"
+  },
+  "author": "Arghya Saha",
+  "license": "ISC",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "dotenv": "^17.2.3",
+    "ejs-mate": "^4.0.0",
+    "express": "^5.2.1",
+    "express-session": "^1.18.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^9.0.2"
+  }
+}

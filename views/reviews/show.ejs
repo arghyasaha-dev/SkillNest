@@ -1,0 +1,30 @@
+<%- layout("layouts/boilerplate") %>
+
+    <section class="review-show">
+        <header class="page-header">
+            <h1>Review</h1>
+            <p>Feedback for completed task</p>
+        </header>
+
+        <% for(let i=0; i<reviews.length ; i++) { %>
+            <div class="review-card card">
+                <div class="review-meta">
+                    <span class="rating">⭐ <%= reviews[i].rating %> / 5</span>
+                    <span class="author">by <%= reviews[i].reviewer %></span>
+                </div>
+
+                <p class="review-text">
+                    <%= reviews[i].comment %>
+                </p>
+
+                <div class="review-actions">
+                    <a href="/tasks/<%= task._id %>/reviews/<%= reviews[i]._id%>/edit" class="btn secondary">Edit</a>
+                    <a href="/tasks/<%= task._id %>" class="btn ghost">Back to Task</a>
+                    <form action="/tasks/<%= task._id %>/reviews/<%= reviews[i]._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+            <% } %>
+
+    </section>

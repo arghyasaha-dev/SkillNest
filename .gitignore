@@ -1,0 +1,96 @@
+# ===============================
+# Node.js
+# ===============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+
+# ===============================
+# Environment variables
+# ===============================
+.env
+.env.*
+!.env.example
+
+# ===============================
+# Logs & runtime
+# ===============================
+logs/
+*.log
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# ===============================
+# OS / Editor junk
+# ===============================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.swn
+.vscode/
+.idea/
+
+# ===============================
+# Build / cache
+# ===============================
+dist/
+build/
+.cache/
+.tmp/
+
+# ===============================
+# Express / Uploads
+# ===============================
+uploads/
+public/uploads/
+
+# ===============================
+# MongoDB / Local DB
+# ===============================
+data/
+*.sqlite
+*.db
+
+# ===============================
+# Python / ML (if mixed in repo)
+# ===============================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.ipynb_checkpoints/
+.venv/
+venv/
+
+# ===============================
+# Models / large artifacts
+# ===============================
+*.h5
+*.pt
+*.pth
+*.onnx
+*.joblib
+*.pkl
+
+# ===============================
+# Testing / Coverage
+# ===============================
+coverage/
+.nyc_output/
+
+# ===============================
+# Vercel / Deployment
+# ===============================
+.vercel/
+
+# ===============================
+# Misc
+# ===============================
+*.tgz
+*.tar.gz

@@ -1,0 +1,33 @@
+.form {
+    max-width: 520px;
+    margin: 60px auto;
+}
+
+.review-show {
+    max-width: 640px;
+    margin: 64px auto;
+}
+
+.review-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 16px;
+}
+
+.review-text {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.review-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.edit-review {
+    max-width: 520px;
+    margin: 64px auto;
+}

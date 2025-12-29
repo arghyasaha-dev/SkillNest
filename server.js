@@ -61,6 +61,25 @@ app.get("/", (req, res) => {
 const tasksRoutes = require("./routes/tasks.js");
 app.use("/tasks", tasksRoutes);
 
+
+// error handling middlewares 
+const ExpressError = require("./utils/ExpressError.js");
+app.all(/(.*)/, (req, res, next) => {
+    next(new ExpressError(404, "Page not Found"));
+})
+app.use((err, req, res, next) => {
+    const status = err.status || 500;
+    const message = err.message || "something went wrong !"
+    res.status(status).render("error.ejs", {
+        pageCSS: "error.css",
+        err: {
+            status,
+            message
+        }
+    });
+})
+
+
 app.listen(process.env.PORT, () => {
     console.log("Listening from PORT ", process.env.PORT);
 })

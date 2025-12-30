@@ -1,102 +1,147 @@
 <%- layout("layouts/boilerplate.ejs") %>
 
-<section class="task-detail">
-    <article class="task-main">
-        <h1><%= task.title %></h1>
-        <p><%= task.description %></p>
-        
-        <div class="divider"></div>
-        
-        <section>
-            <h2>About this task</h2>
-            <dl>
-                <dt style="font-weight: 600; margin-top: 16px;">Budget:</dt>
-                <dd style="margin: 4px 0 0 0; color: #10b981; font-size: 1.25rem; font-weight: 600;">₹<%= task.budget %></dd>
-                
-                <dt style="font-weight: 600; margin-top: 16px;">Category:</dt>
-                <dd style="margin: 4px 0 0 0;"><%= task.category || 'General' %></dd>
-            </dl>
-        </section>
-    </article>
+    <section class="task-detail">
+        <article class="task-main">
+            <h1>
+                <%= task.title %>
+            </h1>
+            <p>
+                <%= task.description %>
+            </p>
 
-    <aside class="task-side">
-        <div class="card">
-            <div style="margin-bottom: 16px;">
-                <span style="display: block; font-size: 0.875rem; color: #6b7280; margin-bottom: 4px;">Budget Range</span>
-                <strong style="display: block; font-size: 1.5rem; color: #2563eb;">₹<%= task.budget %></strong>
-            </div>
-            
-            <a href="/tasks/<%= task._id %>/bids/new" class="btn primary btn-block">
-                Place Your Bid
-            </a>
-        </div>
+            <div class="divider"></div>
 
-        <div class="card" style="padding: 16px;">
-            <h4 style="margin: 0 0 12px 0;">✓ Safety Features</h4>
-            <ul style="margin: 0; padding-left: 20px; font-size: 0.875rem; color: #6b7280;">
-                <li>Secure messaging</li>
-                <li>Payment protection</li>
-                <li>Verified ratings</li>
-            </ul>
-        </div>
-    </aside>
-</section>
+            <section>
+                <h2>About this task</h2>
+                <dl>
+                    <dt style="font-weight: 600; margin-top: 16px;">Budget:</dt>
+                    <dd style="margin: 4px 0 0 0; color: #10b981; font-size: 1.25rem; font-weight: 600;">₹<%=
+                            task.budget %>
+                    </dd>
 
-<section>
-    <header class="page-header">
-        <h2>Bids Received</h2>
-        <p><%= bids.length %> professional(s) interested in this task</p>
-    </header>
+                    <dt style="font-weight: 600; margin-top: 16px;">Category:</dt>
+                    <dd style="margin: 4px 0 0 0;">
+                        <%= task.category || 'General' %>
+                    </dd>
+                </dl>
+            </section>
+        </article>
 
-    <% if (bids.length === 0) { %>
-        <div class="card" style="text-align: center; padding: 40px 20px;">
-            <p style="color: #6b7280; margin: 0;">No bids yet. First to bid gets visibility!</p>
-        </div>
-    <% } else { %>
-        <div class="bid-list">
-            <% for(let i = 0; i < bids.length; i++) { %>
-                <div class="bid-card">
-                    <div class="bid-header">
-                        <div>
-                            <span style="display: block; font-size: 0.875rem; color: #6b7280; margin-bottom: 4px;">Provider</span>
-                            <strong><%= bids[i].bidder %></strong>
-                        </div>
-                        <span class="bid-status <%= bids[i].status %>">
-                            <%= bids[i].status || 'Pending' %>
-                        </span>
-                    </div>
-
-                    <div style="margin: 12px 0;">
-                        <span style="font-size: 1.25rem; font-weight: bold; color: #2563eb;">₹<%= bids[i].amount %></span>
-                    </div>
-
-                    <% if (bids[i].message) { %>
-                        <p style="margin: 12px 0; color: #6b7280; line-height: 1.5;"><%= bids[i].message %></p>
-                    <% } %>
-
-                    <div style="display: flex; gap: 12px; margin-top: 16px;">
-                        <form action="/tasks/<%= task._id %>/bids/<%= bids[i]._id %>/accept" method="POST" style="flex: 1;">
-                            <button type="submit" class="btn success btn-sm btn-block">Accept Bid</button>
-                        </form>
-                        <a href="/tasks/<%= task._id %>/bids/<%= bids[i]._id %>/edit" class="btn secondary btn-sm" style="flex: 1; text-align: center;">Edit</a>
-                    </div>
-
-                    <form action="/tasks/<%= task._id %>/bids/<%= bids[i]._id %>?_method=DELETE" method="POST" style="margin-top: 8px;">
-                        <button type="submit" class="btn danger btn-sm btn-block">Reject</button>
-                    </form>
+        <aside class="task-side">
+            <div class="card">
+                <div style="margin-bottom: 16px;">
+                    <span style="display: block; font-size: 0.875rem; color: #6b7280; margin-bottom: 4px;">Budget
+                        Range</span>
+                    <strong style="display: block; font-size: 1.5rem; color: #2563eb;">₹<%= task.budget %></strong>
                 </div>
-            <% } %>
-        </div>
-    <% } %>
-</section>
 
-<section>
-    <header class="page-header">
-        <h2>Reviews & Feedback</h2>
-    </header>
+                <a href="/tasks/<%= task._id %>/bids/new" class="btn primary btn-block">
+                    Place Your Bid
+                </a>
+            </div>
 
-    <div style="display: flex; gap: 12px;">
-        <a href="/tasks/<%= task._id %>/reviews/new" class="btn primary">Leave Review</a>
-        <a href="/tasks/<%= task._id %>/reviews" class="btn secondary">View Reviews</a>
+            <div class="card" style="padding: 16px;">
+                <h4 style="margin: 0 0 12px 0;">✓ Safety Features</h4>
+                <ul style="margin: 0; padding-left: 20px; font-size: 0.875rem; color: #6b7280;">
+                    <li>Secure messaging</li>
+                    <li>Payment protection</li>
+                    <li>Verified ratings</li>
+                </ul>
+            </div>
+        </aside>
+    </section>
+
+    <section>
+        <header class="page-header">
+            <h2>Bids Received</h2>
+            <p>
+                <%= bids.length %> professional(s) interested in this task
+            </p>
+        </header>
+
+        <% if (bids.length===0) { %>
+            <div class="card" style="text-align: center; padding: 40px 20px;">
+                <p style="color: #6b7280; margin: 0;">No bids yet. First to bid gets visibility!</p>
+            </div>
+            <% } else { %>
+                <div class="bid-list">
+                    <% for(let i=0; i < bids.length; i++) { %>
+                        <div class="bid-card">
+                            <div class="bid-header">
+                                <div>
+                                    <span
+                                        style="display: block; font-size: 0.875rem; color: #6b7280; margin-bottom: 4px;">Provider</span>
+                                    <strong>
+                                        <%= bids[i].bidder %>
+                                    </strong>
+                                </div>
+                                <span class="bid-status <%= bids[i].status %>">
+                                    <%= bids[i].status || 'Pending' %>
+                                </span>
+                            </div>
+
+                            <div style="margin: 12px 0;">
+                                <span style="font-size: 1.25rem; font-weight: bold; color: #2563eb;">₹<%= bids[i].amount
+                                        %></span>
+                            </div>
+
+                            <% if (bids[i].message) { %>
+                                <p style="margin: 12px 0; color: #6b7280; line-height: 1.5;">
+                                    <%= bids[i].message %>
+                                </p>
+                                <% } %>
+
+                                    <div style="display: flex; gap: 12px; margin-top: 16px;">
+                                        <form action="/tasks/<%= task._id %>/bids/<%= bids[i]._id %>/accept"
+                                            method="POST" style="flex: 1;">
+                                            <button type="submit" class="btn success btn-sm btn-block">Accept
+                                                Bid</button>
+                                        </form>
+                                        <a href="/tasks/<%= task._id %>/bids/<%= bids[i]._id %>/edit"
+                                            class="btn secondary btn-sm" style="flex: 1; text-align: center;">Edit</a>
+                                    </div>
+
+                                    <form action="/tasks/<%= task._id %>/bids/<%= bids[i]._id %>?_method=DELETE"
+                                        method="POST" style="margin-top: 8px;">
+                                        <button type="submit" class="btn danger btn-sm btn-block">Reject</button>
+                                    </form>
+                        </div>
+                        <% } %>
+                </div>
+                <% } %>
+    </section>
+
+    <div style="display:flex; gap:8px; margin-bottom: 25px;">
+        <a href="/tasks/<%= task._id %>/edit" class="btn primary" style="
+         flex:2;
+         display:flex;
+         align-items:center;
+         justify-content:center;
+         height:44px;
+         padding:0px;;
+       ">
+            Edit Task
+        </a>
+
+        <form action="/tasks/<%= task._id %>?_method=DELETE" method="POST" style="flex:1;">
+            <button type="submit" class="btn danger" style="
+                  width:100%;
+                  height:44px;
+                  padding:0px;;
+                ">
+                Delete Task
+            </button>
+        </form>
     </div>
-</section>
+
+
+    <section>
+        <header class="page-header">
+            <h2>Reviews & Feedback</h2>
+        </header>
+
+        <div style="display: flex; gap: 12px;">
+            <a href="/tasks/<%= task._id %>/reviews/new" class="btn primary">Leave Review</a>
+            <a href="/tasks/<%= task._id %>/reviews" class="btn secondary">View Reviews</a>
+        </div>
+    </section>

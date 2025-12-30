@@ -1,0 +1,38 @@
+<%- layout("layouts/boilerplate.ejs") %>
+
+    <section class="form">
+        <header class="page-header">
+            <h1>Edit Task</h1>
+            <p>Describe what you need and let local professionals bid on your work</p>
+        </header>
+
+        <form action="/tasks/<%= task._id %>?_method=PUT" method="POST" class="form-card">
+            <div class="field">
+                <label for="title">Task Title *</label>
+                <input name="title" id="title" type="text"
+                    placeholder="e.g., Website design, Home repair, Fitness coaching" required
+                    value="<%= task.title %>" />
+                <span class="form-hint">Be specific about what you need</span>
+            </div>
+
+            <div class="field">
+                <label for="description">Detailed Description *</label>
+                <textarea name="description" id="description"
+                    placeholder="Describe the task, requirements, timeline, and any special instructions"
+                    required><%= task.description %></textarea>
+                <span class="form-hint">The more details, the better bids you'll receive</span>
+            </div>
+
+            <div class="field">
+                <label for="budget">Budget (₹) *</label>
+                <input name="budget" id="budget" type="number" placeholder="e.g., 5000" min="1" step="auto" required
+                    value="<%= task.budget %>" />
+                <span class="form-hint">This helps professionals know if they're interested</span>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn primary btn-lg">Publish Task</button>
+                <a href="/tasks" class="btn ghost">Cancel</a>
+            </div>
+        </form>
+    </section>

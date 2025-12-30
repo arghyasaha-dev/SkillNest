@@ -31,6 +31,26 @@ router.get("/:id", catchAsync(async (req, res) => {
     const bids = await Bid.find({ task: taskid }).populate("bidder");
     res.render("tasks/show.ejs", { pageCSS: "tasks.css", task, bids });
 }))
+router.delete("/:id", catchAsync(async (req, res) => {
+    const taskid = req.params.id;
+    await Review.deleteMany({ task: taskid });
+    await Bid.deleteMany({ task: taskid });
+    await Task.findByIdAndDelete(taskid);
+    req.flash("success", "Successfully deleted task !");
+    res.redirect("/tasks");
+}))
+router.get("/:id/edit", catchAsync(async (req, res) => {
+    const taskid = req.params.id;
+    const task = await Task.findById(taskid);
+    res.render("tasks/edit.ejs", { task });
+}))
+router.put("/:id", catchAsync(async (req, res) => {
+    const taskid = req.params.id;
+    const { title, description, budget } = req.body;
+    await Task.findByIdAndUpdate(taskid, { title, description, budget });
+    req.flash("success", "Successfully update Task");
+    res.redirect(`/tasks/${taskid}`);
+}))
 
 // bids
 router.get("/:id/bids/new", catchAsync(async (req, res) => {
@@ -101,7 +121,7 @@ router.delete("/:id/bids/:bidid", catchAsync(async (req, res) => {
 router.get("/:id/reviews", catchAsync(async (req, res) => {
     const taskid = req.params.id;
     const task = await Task.findById(taskid)//.populate("reviews");
-    const reviews = await Review.find({}).populate("task");
+    const reviews = await Review.find({ task: taskid }).populate("task");
     res.render("reviews/show.ejs", { pageCSS: "reviews.css", task, reviews });
 }))
 router.get("/:id/reviews/:reviewid/edit", catchAsync(async (req, res) => {

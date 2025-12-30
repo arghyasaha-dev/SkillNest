@@ -1,39 +1,43 @@
 <%- layout("layouts/boilerplate.ejs") %>
 
-<section class="review-show">
-    <header class="page-header">
-        <h1>Reviews & Feedback</h1>
-        <p>Ratings from users who completed this task</p>
-    </header>
+    <section class="review-show">
+        <header class="page-header">
+            <h1>Reviews & Feedback</h1>
+            <p>Ratings from users who completed this task</p>
+        </header>
 
-    <% if (reviews.length === 0) { %>
-        <div class="card" style="text-align: center; padding: 40px 20px;">
-            <p style="color: #6b7280; margin: 0;">No reviews yet</p>
-        </div>
-    <% } else { %>
-        <div style="display: grid; gap: 16px;">
-            <% for(let i = 0; i < reviews.length; i++) { %>
-                <article class="review-card card">
-                    <div class="review-meta">
-                        <div>
-                            <span class="rating"><%= reviews[i].rating %>/5</span>
-                            <small style="color: #9ca3af;">by <%= reviews[i].reviewer %></small>
-                        </div>
-                    </div>
+        <% if (reviews.length===0) { %>
+            <div class="card" style="text-align: center; padding: 40px 20px;">
+                <p style="color: #6b7280; margin: 0;">No reviews yet</p>
+            </div>
+            <% } else { %>
+                <div style="display: grid; gap: 16px;">
+                    <% for(let i=0; i < reviews.length; i++) { %>
+                        <article class="review-card card">
+                            <div class="review-meta">
+                                <div>
+                                    <span class="rating">
+                                        <%= reviews[i].rating %>/5
+                                    </span>
+                                    <small style="color: #9ca3af;">by <%= reviews[i].reviewer.username %></small>
+                                </div>
+                            </div>
 
-                    <p class="review-text">
-                        <%= reviews[i].comment %>
-                    </p>
+                            <p class="review-text">
+                                <%= reviews[i].comment %>
+                            </p>
 
-                    <div class="review-actions">
-                        <a href="/tasks/<%= task._id %>/reviews/<%= reviews[i]._id%>/edit" class="btn secondary btn-sm">Edit</a>
-                        <form action="/tasks/<%= task._id %>/reviews/<%= reviews[i]._id%>?_method=DELETE" method="POST" style="display: inline;">
-                            <button type="submit" class="btn danger btn-sm">Delete</button>
-                        </form>
-                        <a href="/tasks/<%= task._id %>" class="btn ghost btn-sm">Back to Task</a>
-                    </div>
-                </article>
-            <% } %>
-        </div>
-    <% } %>
-</section>
+                            <div class="review-actions">
+                                <a href="/tasks/<%= task._id %>/reviews/<%= reviews[i]._id%>/edit"
+                                    class="btn secondary btn-sm">Edit</a>
+                                <form action="/tasks/<%= task._id %>/reviews/<%= reviews[i]._id%>?_method=DELETE"
+                                    method="POST" style="display: inline;">
+                                    <button type="submit" class="btn danger btn-sm">Delete</button>
+                                </form>
+                                <a href="/tasks/<%= task._id %>" class="btn ghost btn-sm">Back to Task</a>
+                            </div>
+                        </article>
+                        <% } %>
+                </div>
+                <% } %>
+    </section>

@@ -1,53 +1,57 @@
 <%- layout("layouts/boilerplate.ejs") %>
 
-<section class="accepted-bid">
-    <header class="page-header">
-        <h1>Bid Accepted ✓</h1>
-        <p>This bid has been confirmed for the task</p>
-    </header>
+    <section class="accepted-bid">
+        <header class="page-header">
+            <h1>Bid Accepted ✓</h1>
+            <p>This bid has been confirmed for the task</p>
+        </header>
 
-    <div class="card bid-summary">
-        <div class="bid-header">
-            <div>
-                <span class="label">Service Provider</span>
-                <strong style="font-size: 1.125rem;">Dummy Name</strong>
-            </div>
-            <span class="bid-status accepted">
-                <%= bid.status %>
-            </span>
-        </div>
-
-        <div class="bid-details">
-            <div class="detail">
-                <span class="label">💰 Bid Amount</span>
-                <strong>₹<%= bid.amount %></strong>
+        <div class="card bid-summary">
+            <div class="bid-header">
+                <div>
+                    <span class="label">Service Provider : </span>
+                    <strong style="font-size: 1.125rem;">
+                        <%= bid.bidder.username %>
+                    </strong>
+                </div>
+                <span class="bid-status accepted">
+                    <%= bid.status %>
+                </span>
             </div>
 
-            <div class="detail">
-                <span class="label">📝 Provider Message</span>
-                <p><%= bid.message || 'No additional message provided' %></p>
+            <div class="bid-details">
+                <div class="detail">
+                    <span class="label">💰 Bid Amount</span>
+                    <strong>₹<%= bid.amount %></strong>
+                </div>
+
+                <div class="detail">
+                    <span class="label">📝 Provider Message</span>
+                    <p>
+                        <%= bid.message || 'No additional message provided' %>
+                    </p>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="bid-actions">
+                <a href="/tasks/<%= taskid %>/chat" class="btn primary">
+                    💬 Open Chat
+                </a>
+                <a href="/tasks/<%= taskid %>" class="btn secondary">
+                    ← View Task
+                </a>
             </div>
         </div>
 
-        <div class="divider"></div>
-
-        <div class="bid-actions">
-            <a href="/tasks/<%= taskid %>/chat" class="btn primary">
-                💬 Open Chat
-            </a>
-            <a href="/tasks/<%= taskid %>" class="btn secondary">
-                ← View Task
-            </a>
-        </div>
-    </div>
-
-    <section style="margin-top: 48px;">
-        <h2>What's Next?</h2>
-        <ol style="line-height: 2; color: #6b7280;">
-            <li>Use the chat to discuss details and timeline</li>
-            <li>Share any specific requirements or preferences</li>
-            <li>Mark task complete when the work is done</li>
-            <li>Leave a review for the service provider</li>
-        </ol>
+        <section style="margin-top: 48px;">
+            <h2>What's Next?</h2>
+            <ol style="line-height: 2; color: #6b7280;">
+                <li>Use the chat to discuss details and timeline</li>
+                <li>Share any specific requirements or preferences</li>
+                <li>Mark task complete when the work is done</li>
+                <li>Leave a review for the service provider</li>
+            </ol>
+        </section>
     </section>
-</section>

@@ -11,7 +11,7 @@ const BidSchema = new mongoose.Schema(
         bidder: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
-            required: false // temporary 
+            required: true
         },
 
         task: {

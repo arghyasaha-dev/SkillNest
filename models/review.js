@@ -11,7 +11,7 @@ const ReviewSchema = new mongoose.Schema(
         reviewer: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
-            required: false // temporary
+            required: true
         },
 
         reviewee: {

@@ -14,6 +14,12 @@
             <section>
                 <h2>About this task</h2>
                 <dl>
+
+                    <dt style="font-weight: 600; margin-top: 16px;">Owner:</dt>
+                    <dd style="margin: 4px 0 0 0;">
+                        <%= task.owner.username %>
+                    </dd>
+
                     <dt style="font-weight: 600; margin-top: 16px;">Budget:</dt>
                     <dd style="margin: 4px 0 0 0; color: #10b981; font-size: 1.25rem; font-weight: 600;">₹<%=
                             task.budget %>
@@ -23,6 +29,7 @@
                     <dd style="margin: 4px 0 0 0;">
                         <%= task.category || 'General' %>
                     </dd>
+
                 </dl>
             </section>
         </article>
@@ -72,7 +79,7 @@
                                     <span
                                         style="display: block; font-size: 0.875rem; color: #6b7280; margin-bottom: 4px;">Provider</span>
                                     <strong>
-                                        <%= bids[i].bidder %>
+                                        <%= bids[i].bidder.username %>
                                     </strong>
                                 </div>
                                 <span class="bid-status <%= bids[i].status %>">

@@ -1,7 +1,7 @@
 <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="navbar-container">
         <div class="navbar-brand">
-            <a href="/tasks" class="brand">
+            <a href="/" class="brand">
                 <span>⚙️</span>
                 <span>SkillNest</span>
             </a>
@@ -10,8 +10,19 @@
         <ul class="navbar-nav">
             <li><a href="/tasks">Tasks</a></li>
             <li><a href="/tasks/new">Post</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
+            <% if(! currentUser) {%>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+                <% } else { %>
+                    <li>
+                        <span>
+                            <%= currentUser.username %>
+                        </span>
+                        <a href="/logout" style="margin-left: 30px;">
+                            Logout
+                        </a>
+                    </li>
+                    <% } %>
         </ul>
     </div>
 </nav>

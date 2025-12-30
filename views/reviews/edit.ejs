@@ -1,19 +1,41 @@
-<%- layout("layouts/boilerplate") %>
+<%- layout("layouts/boilerplate.ejs") %>
 
-    <section class="form edit-review">
-        <header class="page-header">
-            <h1>Edit Review</h1>
-            <p>Update your feedback</p>
-        </header>
+<section class="form edit-review">
+    <header class="page-header">
+        <h1>Edit Your Review</h1>
+        <p>Update your feedback about this service</p>
+    </header>
 
-        <form action="/tasks/<%= task._id %>/reviews/<%= review._id %>?_method=PUT" method="POST" class="form-card">
-            <label for="rating">Rating (1–5)</label>
-            <input name="rating" id="rating" placeholder="rating" type="number" min="1" max="5"
-                value="<%= review.rating %>" />
+    <form action="/tasks/<%= task._id %>/reviews/<%= review._id %>?_method=PUT" method="POST" class="form-card">
+        <div class="field">
+            <label for="rating">Rating (1–5) *</label>
+            <input 
+                name="rating" 
+                id="rating" 
+                type="number"
+                min="1"
+                max="5"
+                value="<%= review.rating %>"
+                required 
+            />
+            <span class="form-hint">1 = Poor, 5 = Excellent</span>
+        </div>
 
-            <label for="comment">Feedback</label>
-            <textarea name="comment" id="comment" placeholder="comment"><%= review.comment %></textarea>
+        <div class="field">
+            <label for="comment">Feedback *</label>
+            <textarea 
+                name="comment" 
+                id="comment" 
+                placeholder="Share your experience"
+                rows="5"
+                required
+            ><%= review.comment %></textarea>
+            <span class="form-hint">Be specific and helpful to others</span>
+        </div>
 
-            <button class="btn primary">Submit</button>
-        </form>
-    </section>
+        <div class="form-actions">
+            <button type="submit" class="btn primary btn-lg">Update Review</button>
+            <a href="/tasks/<%= task._id %>/reviews" class="btn ghost">Cancel</a>
+        </div>
+    </form>
+</section>

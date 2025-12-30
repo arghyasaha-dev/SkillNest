@@ -57,7 +57,8 @@ router.get("/:id/bids/:bidid/edit", catchAsync(async (req, res) => {
     const taskid = req.params.id;
     const bidid = req.params.bidid;
     const bid = await Bid.findById(bidid).populate("bidder");
-    res.render("bids/edit.ejs", { pageCSS: "bids.css", bid, taskid });
+    const task = await Task.findById(taskid);
+    res.render("bids/edit.ejs", { pageCSS: "bids.css", bid, task });
 }))
 router.put("/:id/bids/:bidid", catchAsync(async (req, res) => {
     const taskid = req.params.id;

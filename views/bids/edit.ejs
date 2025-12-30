@@ -2,24 +2,28 @@
 
     <section class="form edit-bid">
         <header class="page-header">
-            <h1>Edit Bid</h1>
-            <p>Update your offer for this task</p>
+            <h1>Update Your Bid</h1>
+            <p>Modify your offer or proposal message</p>
         </header>
 
-        <form action="/tasks/<%= taskid %>/bids/<%= bid._id %>?_method=PUT" method="POST" class="form-card">
+        <form action="/tasks/<%= task._id %>/bids/<%= bid._id %>?_method=PUT" method="POST" class="form-card">
             <div class="field">
-                <label for="amount">Bid Amount (₹)</label>
-                <input type="number" name="amount" id="amount" placeholder="amount" value="<%= bid.amount %>" />
+                <label for="amount">Bid Amount (₹) *</label>
+                <input type="number" name="amount" id="amount" placeholder="Enter your offer" value="<%= bid.amount %>"
+                    min="1" max="<%= task.budget %>" step="any" required />
+                <span class="form-hint">Update your price quote if needed</span>
             </div>
 
             <div class="field">
-                <label for="message">Message (optional)</label>
-                <textarea name="message" id="message" placeholder="message" rows="4"><%= bid.message %></textarea>
+                <label for="message">Proposal Message</label>
+                <textarea name="message" id="message" placeholder="Share more about your experience or availability"
+                    rows="5"><%= bid.message %></textarea>
+                <span class="form-hint">Help the client understand your capabilities</span>
             </div>
 
             <div class="form-actions">
-                <button class="btn primary">Update Bid</button>
-                <a href="/tasks/<%= taskid %>" class="btn ghost">Cancel</a>
+                <button type="submit" class="btn primary btn-lg">Update Bid</button>
+                <a href="/tasks/<%= task._id %>" class="btn ghost">Cancel</a>
             </div>
         </form>
     </section>

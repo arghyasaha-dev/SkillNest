@@ -1,0 +1,245 @@
+/* ============================================
+   SKILLNEST - Animation & Transition Library
+   Micro-interactions for better UX
+   ============================================ */
+
+@import url('variables.css');
+
+/* ============================================
+   SCROLL BEHAVIOR & PERFORMANCE
+   ============================================ */
+
+/* Smooth scroll for browsers that don't inherit from HTML */
+html {
+    scroll-behavior: smooth;
+}
+
+/* GPU acceleration for animations */
+.hero-animation,
+.feature-card,
+.step-item,
+.stat-card,
+.task-card,
+.btn,
+.card {
+    will-change: transform, box-shadow;
+    transform: translate3d(0, 0, 0);
+}
+
+/* ============================================
+   MICRO-INTERACTIONS
+   ============================================ */
+
+/* Link hover effects */
+a:not(.btn) {
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+a:not(.btn)::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: width var(--transition-fast);
+}
+
+a:not(.btn):hover::before {
+    width: 100%;
+}
+
+/* Form label hover */
+label {
+    transition: color var(--transition-fast);
+}
+
+label:hover {
+    color: var(--color-primary);
+}
+
+/* Input focus glow */
+input:focus,
+textarea:focus,
+select:focus {
+    animation: none;
+}
+
+/* ============================================
+   BUTTON INTERACTIONS
+   ============================================ */
+
+.btn {
+    transition: all var(--transition-base);
+}
+
+.btn.primary:active {
+    transform: scale(0.98);
+}
+
+.btn.secondary:active {
+    transform: scale(0.98);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ============================================
+   CARD INTERACTIONS
+   ============================================ */
+
+.card,
+.task-card,
+.feature-card,
+.step-item,
+.testimonial-card {
+    transition: all var(--transition-base);
+}
+
+.card:active,
+.task-card:active,
+.feature-card:active,
+.step-item:active,
+.testimonial-card:active {
+    transform: scale(0.99);
+}
+
+/* ============================================
+   TEXT & TYPOGRAPHY POLISH
+   ============================================ */
+
+/* Smooth font rendering */
+h1, h2, h3, h4, h5, h6,
+.btn,
+label {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   MODAL & OVERLAY ANIMATIONS
+   ============================================ */
+
+/* Flash message animations */
+.flash {
+    position: relative;
+    overflow: hidden;
+}
+
+.flash::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmerFlash 2s infinite;
+}
+
+@keyframes shimmerFlash {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* ============================================
+   RESPONSIVE ANIMATION ADJUSTMENTS
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Reduce animations on mobile for better performance */
+@media (max-width: 640px) {
+    .hero-animation,
+    .feature-icon,
+    .stat-number {
+        animation-duration: 0.4s !important;
+    }
+
+    .feature-card,
+    .step-item,
+    .stat-card,
+    .task-card {
+        animation-duration: 0.3s !important;
+    }
+}
+
+/* ============================================
+   LOADING STATE ANIMATIONS
+   ============================================ */
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.loading {
+    background: linear-gradient(
+        90deg,
+        #e5e7eb 25%,
+        #f3f4f6 50%,
+        #e5e7eb 75%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+
+/* Fade in on scroll (helper class) */
+.fade-in-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all var(--transition-base);
+}
+
+.fade-in-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   ACCESSIBILITY - FOCUS VISIBLE
+   ============================================ */
+
+:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-md);
+}
+
+.btn:focus-visible {
+    outline-offset: 4px;
+}
+
+/* ============================================
+   PRINT STYLES - DISABLE ANIMATIONS
+   ============================================ */
+
+@media print {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}

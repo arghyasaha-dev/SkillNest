@@ -1,22 +1,33 @@
 <%- layout("layouts/boilerplate.ejs") %>
-    <header class="page-header">
-        <h1>Nearby Tasks</h1>
-        <p>Services requested around you</p>
-    </header>
 
-    <section class="task-grid">
-        <% for (let i=0; i < tasks.length; i++) { %>
-            <article class="task-card">
-                <h3>
-                    <%= tasks[i].title %>
-                </h3>
-                <p>
-                    <%= tasks[i].description %>
-                </p>
-                <span class="meta">
-                    <%= tasks[i].budget %> · 2 km
-                </span>
-                <a href="/tasks/<%= tasks[i]._id %>" class="link">View</a>
-            </article>
-            <% } %>
+<header class="page-header">
+    <h1>Nearby Tasks</h1>
+    <p>Services requested around you · Find opportunities in your neighborhood</p>
+</header>
+
+<section class="task-grid">
+    <% for (let i = 0; i < tasks.length; i++) { %>
+        <article class="task-card" role="article">
+            <h3><%= tasks[i].title %></h3>
+            <p><%= tasks[i].description %></p>
+            
+            <div class="task-meta">
+                <span>💰 Budget: <%= tasks[i].budget %></span>
+                <span>📍 ~2 km away</span>
+            </div>
+            
+            <a href="/tasks/<%= tasks[i]._id %>" class="btn primary btn-sm">
+                View Details
+                <span>→</span>
+            </a>
+        </article>
+    <% } %>
+</section>
+
+<% if (tasks.length === 0) { %>
+    <section class="text-center" style="padding: 60px 20px;">
+        <h2>No tasks posted yet</h2>
+        <p>Be the first to post a task and get bids from skilled professionals nearby!</p>
+        <a href="/tasks/new" class="btn primary">Post a Task</a>
     </section>
+<% } %>

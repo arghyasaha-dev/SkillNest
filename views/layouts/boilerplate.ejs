@@ -3,26 +3,69 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>
-        <%= "SkillNest" %>
-    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="SkillNest - Hyperlocal Skill Exchange Platform" />
+    <meta name="theme-color" content="#2563eb" />
+    
+    <title>SkillNest - Local Service Exchange</title>
 
+    <!-- CSS Files - Design System -->
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/components.css">
-    <!-- <% if (pageCSS) { %>
-        <link rel="stylesheet" href="/css/pages/<%= pageCSS %>">
-        <% } %> -->
+    <link rel="stylesheet" href="/css/pages.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/home.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%232563eb'>⚙️</text></svg>">
 </head>
 
 <body>
     <%- include("../partials/navbar.ejs") %>
 
-        <main class="app">
-            <%- include("../partials/flash.ejs") %>
-                <%- body %>
-        </main>
+    <main class="app container">
+        <%- include("../partials/flash.ejs") %>
+        <%- body %>
+    </main>
 
-        <%- include("../partials/footer.ejs") %>
+    <%- include("../partials/footer.ejs") %>
+
+    <!-- Flash Message Close Script -->
+    <script>
+        (function() {
+            const flashes = document.querySelectorAll('.flash');
+            flashes.forEach(flash => {
+                // Add close button
+                const closeBtn = document.createElement('button');
+                closeBtn.type = 'button';
+                closeBtn.className = 'flash-close';
+                closeBtn.innerHTML = '✕';
+                closeBtn.style.cssText = 'position: absolute; right: 16px; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 1.25rem; cursor: pointer; color: inherit; opacity: 0.6; transition: opacity 200ms ease; padding: 4px 8px;';
+                
+                closeBtn.addEventListener('mouseover', () => closeBtn.style.opacity = '1');
+                closeBtn.addEventListener('mouseout', () => closeBtn.style.opacity = '0.6');
+                
+                closeBtn.addEventListener('click', () => {
+                    flash.style.animation = 'slideOut 0.3s ease-out forwards';
+                    setTimeout(() => flash.remove(), 300);
+                });
+
+                flash.style.position = 'relative';
+                flash.appendChild(closeBtn);
+            });
+        })();
+    </script>
+
+    <style>
+        @keyframes slideOut {
+            to {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+        }
+    </style>
 </body>
 
 </html>

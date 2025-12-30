@@ -1,0 +1,539 @@
+/* ============================================
+   SKILLNEST - Page Specific Styles
+   ============================================ */
+
+@import url('variables.css');
+
+/* ============================================
+   TASK PAGES
+   ============================================ */
+
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--grid-gap);
+    margin-bottom: var(--space-8);
+}
+
+@media (max-width: 768px) {
+    .task-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.task-detail {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: var(--grid-gap);
+    margin-bottom: var(--space-8);
+}
+
+@media (max-width: 968px) {
+    .task-detail {
+        grid-template-columns: 1fr;
+    }
+}
+
+.task-main {
+    grid-column: 1;
+}
+
+.task-main h1 {
+    margin-bottom: var(--space-4);
+}
+
+.task-main p {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+}
+
+.task-side {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+@media (max-width: 968px) {
+    .task-side {
+        grid-column: 1;
+    }
+}
+
+.task-side .card {
+    padding: var(--space-4);
+}
+
+.task-side .card span {
+    display: block;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2);
+}
+
+.task-side .card strong {
+    display: block;
+    font-size: var(--font-size-2xl);
+    color: var(--color-primary);
+}
+
+/* ============================================
+   BID LIST & BID ITEMS
+   ============================================ */
+
+.bid-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+}
+
+.bid-row {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-4);
+    align-items: center;
+}
+
+.bid-row span:first-child {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+}
+
+.bid-row > div {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* ============================================
+   BID SUMMARY
+   ============================================ */
+
+.bid-summary {
+    margin-bottom: var(--space-6);
+}
+
+.bid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.bid-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.detail .label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.detail strong {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-primary);
+}
+
+.detail p {
+    margin: 0;
+    color: var(--color-text-secondary);
+}
+
+.bid-actions {
+    display: flex;
+    gap: var(--space-3);
+}
+
+/* ============================================
+   AUTH PAGES
+   ============================================ */
+
+.auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 600px;
+}
+
+.auth h1 {
+    text-align: center;
+    margin-bottom: var(--space-8);
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 400px;
+}
+
+.auth-card label {
+    display: block;
+    margin-bottom: var(--space-2);
+}
+
+.auth-card input {
+    width: 100%;
+    margin-bottom: var(--space-4);
+}
+
+.auth-card button {
+    width: 100%;
+}
+
+/* ============================================
+   REVIEW PAGES
+   ============================================ */
+
+.review-show {
+    margin-bottom: var(--space-8);
+}
+
+.review-show .card {
+    margin-bottom: var(--space-4);
+}
+
+.review-text {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+}
+
+.review-actions {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   CHAT INTERFACE
+   ============================================ */
+
+.chat {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: var(--space-6);
+    height: calc(100vh - 200px);
+    margin-bottom: var(--space-8);
+}
+
+@media (max-width: 768px) {
+    .chat {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+}
+
+.chat-sidebar {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    overflow-y: auto;
+}
+
+.chat-sidebar h3 {
+    margin: 0 0 var(--space-4) 0;
+}
+
+.chat-main {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+}
+
+.messages {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    overflow-y: auto;
+    margin-bottom: var(--space-4);
+    padding: var(--space-4) 0;
+}
+
+.message {
+    max-width: 70%;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-lg);
+    word-wrap: break-word;
+    line-height: var(--line-height-relaxed);
+}
+
+.message.left {
+    align-self: flex-start;
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+    border-bottom-left-radius: var(--radius-sm);
+}
+
+.message.right {
+    align-self: flex-end;
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border-bottom-right-radius: var(--radius-sm);
+}
+
+.chat-input {
+    display: flex;
+    gap: var(--space-3);
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-3);
+}
+
+.chat-input input {
+    flex: 1;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+}
+
+/* ============================================
+   ERROR PAGE
+   ============================================ */
+
+.error-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 600px;
+    margin-bottom: var(--space-8);
+}
+
+.error-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    max-width: 500px;
+    text-align: center;
+}
+
+.error-meta {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+.error-code {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+}
+
+.error-label {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.error-title {
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+}
+
+.error-stack {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    font-size: var(--font-size-xs);
+    font-family: var(--font-mono);
+    overflow-x: auto;
+    margin: var(--space-6) 0;
+    text-align: left;
+    color: var(--color-danger);
+}
+
+.error-actions {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   FORM LAYOUTS
+   ============================================ */
+
+.form {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.form-card label {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+}
+
+.form-card input,
+.form-card textarea,
+.form-card select {
+    width: 100%;
+}
+
+.form-card button {
+    align-self: flex-start;
+}
+
+.new-bid,
+.edit-bid {
+    max-width: 600px;
+}
+
+.edit-review {
+    max-width: 600px;
+}
+
+/* ============================================
+   ACCEPTED BID SECTION
+   ============================================ */
+
+.accepted-bid {
+    margin-bottom: var(--space-8);
+}
+
+.accepted-bid .bid-summary {
+    max-width: 600px;
+}
+
+.status {
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+}
+
+.status.accepted {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+/* ============================================
+   PAGE ANIMATIONS
+   ============================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleInCenter {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Bid list animations */
+.bid-row {
+    animation: slideInDown 0.4s ease-out;
+}
+
+.bid-row:nth-child(1) { animation-delay: 0.1s; }
+.bid-row:nth-child(2) { animation-delay: 0.15s; }
+.bid-row:nth-child(3) { animation-delay: 0.2s; }
+
+/* Review cards animations */
+.review-card {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.review-card:nth-child(1) { animation-delay: 0.1s; }
+.review-card:nth-child(2) { animation-delay: 0.15s; }
+.review-card:nth-child(3) { animation-delay: 0.2s; }
+
+/* Chat messages animations */
+.message {
+    animation: fadeInUp 0.3s ease-out backwards;
+}
+
+.message.left:nth-child(1) { animation-delay: 0.1s; }
+.message.right:nth-child(2) { animation-delay: 0.15s; }
+
+/* Error page animation */
+.error-card {
+    animation: scaleInCenter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Form card animations */
+.form-card {
+    animation: slideInDown 0.4s ease-out;
+}
+
+.auth-card {
+    animation: scaleInCenter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Page header animations */
+.page-header {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.page-header h1,
+.page-header h2 {
+    animation: slideInDown 0.5s ease-out;
+}
+
+.page-header p {
+    animation: fadeInUp 0.5s ease-out 0.1s both;
+}

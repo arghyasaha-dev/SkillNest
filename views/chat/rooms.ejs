@@ -1,18 +1,28 @@
 <%- layout("layouts/boilerplate.ejs") %>
-    <section class="chat">
-        <aside class="chat-sidebar">
-            <h3>Task Chat</h3>
-        </aside>
 
-        <div class="chat-main">
-            <div class="messages">
-                <div class="message left">I can do it today.</div>
-                <div class="message right">Okay, accepted.</div>
+<section class="chat">
+    <aside class="chat-sidebar">
+        <h3 style="margin: 0 0 16px 0;">💬 Task Chat</h3>
+        <p style="margin: 0; color: #9ca3af; font-size: 0.875rem;">Direct messaging with the service provider</p>
+    </aside>
+
+    <div class="chat-main">
+        <div class="messages">
+            <div class="message left">
+                I can do it today.
             </div>
-
-            <form class="chat-input">
-                <input placeholder="Message…" />
-                <button>Send</button>
-            </form>
+            <div class="message right">
+                Okay, accepted.
+            </div>
         </div>
-    </section>
+
+        <form class="chat-input">
+            <input 
+                type="text"
+                placeholder="Type your message…"
+                aria-label="Message input"
+            />
+            <button type="submit" class="btn primary">Send</button>
+        </form>
+    </div>
+</section>

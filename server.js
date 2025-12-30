@@ -55,7 +55,7 @@ const userRoutes = require("./routes/user.js");
 app.use("/", userRoutes);
 
 app.get("/", (req, res) => {
-    res.send("SkillNest Home Page");
+    res.render("home.ejs");
 })
 
 const tasksRoutes = require("./routes/tasks.js");

@@ -1,4 +1,4 @@
-const { isLoggedIn } = require("../middlewares/middleware.js");
+const { isLoggedIn, isBidAccepted } = require("../middlewares/middleware.js");
 const catchAsync = require("../utils/catchAsync.js");
 
 const express = require("express");
@@ -69,7 +69,7 @@ router.post("/:id/bids", isLoggedIn, catchAsync(async (req, res) => {
     req.flash("success", "Successfully added your Bid !");
     res.redirect("/tasks/" + taskid);
 }))
-router.get("/:id/bids/:bidid", isLoggedIn, catchAsync(async (req, res) => {
+router.get("/:id/bids/:bidid", isLoggedIn, isBidAccepted, catchAsync(async (req, res) => {
     const taskid = req.params.id;
     const bidid = req.params.bidid;
     const bid = await Bid.findById(bidid).populate("bidder").populate("task");
